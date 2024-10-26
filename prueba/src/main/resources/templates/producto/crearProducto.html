@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<nav class="navbar navbar-inverse">
+
+  <div class="container-fluid">
+
+    <ul class="nav navbar-nav">
+
+      <li class="nav-item">
+        <a class="nav-link" th:href="@{/inicio}">Inicio</a>
+      </li>
+
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" >Productos
+          <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a th:href="@{/productos}">Listar</a></li>
+          <li><a th:href="@{/crearProducto}">Crear</a></li>
+
+        </ul>
+      </li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" >Productos
+          <span class="caret"></span></a>
+        <ul class="dropdown-menu">
+          <li><a th:href="@{/productos}">Listar</a></li>
+          <li><a th:href="@{/crearProducto}">Crear</a></li>
+
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+<h3 class="container text-center" >[[${titulo}]]</h3>
+<div class="container">
+  <form th:action="@{/nuevoProductoR}" th:object="${nuevoProducto}" method="post">
+    <div class="mb-3 mt-3">
+      <label class="form-label">Nombre Producto:</label>
+      <input type="text" class="form-control" name="nombre" th:field="*{nombre}">
+    </div>
+    <div class="mb-3 mt-3">
+      <label class="form-label">Precio:</label>
+      <input type="text" class="form-control"  name="precio" th:field="*{precio}">
+    </div>
+    <div class="mb-3 mt-3">
+      <label class="form-label">Stock:</label>
+      <input type="text" class="form-control"  name="stock" th:field="*{stock}">
+    </div>
+    <input type="hidden"  th:field="*{idProducto}">
+
+    <button type="submit" class="btn btn-primary">GUARDAR</button>
+  </form>
+</div>
+
+</body>
+</html>
